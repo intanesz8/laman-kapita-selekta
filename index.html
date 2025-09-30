@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Laman Kapita Selekta — Intan Eka Safitri</title>
+  <meta name="author" content="Intan Eka Safitri (2315061064)" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: linear-gradient(135deg,#fff5f5 0%, #ffeaea 100%);
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent1: #800000;
+      --accent2: #b22222;
+      --accent3: #e63946;
+      --shadow: 0 8px 20px rgba(17,24,39,0.08);
+      --radius: 16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      background: var(--bg);
+      color:#0f172a;
+      line-height:1.6;
+    }
+    h2,h3,h4{margin-top:0}
+
+    /* Highlight judul section */
+    h3{
+      color: var(--accent1);
+      border-left: 6px solid var(--accent2);
+      padding-left: 10px;
+      margin-bottom: 16px;
+    }
+
+    /* Navbar */
+    .topbar{
+      position:sticky; top:0; z-index:30;
+      background:rgba(255,255,255,0.9);
+      backdrop-filter: blur(6px);
+      border-bottom:1px solid rgba(0,0,0,0.05);
+      display:flex;justify-content:space-between;align-items:center;
+      padding:12px 22px;
+      flex-wrap:wrap;
+    }
+    .logo{width:42px;height:42px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent1),var(--accent2));
+      display:flex;align-items:center;justify-content:center;
+      font-weight:700;color:#fff;box-shadow:var(--shadow)}
+    nav{display:flex;gap:10px;flex-wrap:wrap}
+    nav a{
+      text-decoration:none;color:#374151;font-weight:600;font-size:14px;
+      padding:6px 12px;border-radius:8px;
+    }
+    nav a:hover{background:rgba(128,0,0,0.1)}
+
+    /* Layout umum */
+    .container{max-width:1100px;margin:0 auto;padding:20px}
+    .section{margin:40px 0;padding:26px;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .card{background:#fff;padding:16px;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.05);transition:.2s}
+    .card:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(0,0,0,0.08)}
+
+    /* Hero */
+    .hero{
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+      margin: 40px 0;
+    }
+    .profile{
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      box-shadow: 0 6px 18px rgba(128,0,0,0.15);
+      min-height: 100%;
+    }
+    .profile img{
+      width: 240px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 6px solid #fff;
+      box-shadow: 0 6px 20px rgba(128,0,0,0.3);
+      margin-bottom: 12px;
+    }
+
+    /* Tombol */
+    .btn {
+      display:inline-block;
+      background:linear-gradient(135deg,var(--accent1),var(--accent2));
+      color:#fff;
+      padding:10px 18px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+      transition:all .2s;
+    }
+    .btn:hover {
+      background:linear-gradient(135deg,var(--accent2),var(--accent3));
+      box-shadow:0 6px 16px rgba(0,0,0,0.15);
+      transform:translateY(-2px);
+    }
+
+    /* SWOT */
+    .swot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .swot-item{padding:16px;border-radius:12px;color:#fff;min-height:150px}
+    .swot-strength{background:linear-gradient(135deg,#8b0000,#a52a2a)}
+    .swot-weak{background:linear-gradient(135deg,#b22222,#e63946)}
+    .swot-opp{background:linear-gradient(135deg,#dc143c,#ff6347)}
+    .swot-threat{background:linear-gradient(135deg,#6b0f1a,#8b0000)}
+
+    /* Porter */
+    .porter-list {
+     display: grid;
+    grid-template-columns: repeat(2,1fr);
+     gap: 20px;
+    }
+    .porter-item {
+     display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: .2s;
+    }
+    .porter-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    }
+    .porter-item-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,var(--accent1),var(--accent2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    flex-shrink: 0;
+    }
+
+    /* Kompetensi */
+.kompetensi-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px;
+}
+.kompetensi-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: 0.2s;
+  border-top: 6px solid var(--accent1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.kompetensi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+.kompetensi-card h4 {
+  margin-bottom: 10px;
+}
+
+
+    /* Footer */
+    footer{
+      text-align:center;
+      padding:20px;
+      color:#fff;
+      font-size:14px;
+      margin-top:40px;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+    }
+
+    /* Responsive */
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid-2,.grid-3,.swot-grid{grid-template-columns:1fr}
+      .profile img{width:180px;height:180px}
+      nav{justify-content:center;margin-top:10px}
+    }
+    @media(max-width:500px){
+      body{font-size:14px}
+      h2{font-size:22px}
+      h3{font-size:18px}
+      nav a{font-size:12px;padding:4px 8px}
+      .profile img{width:150px;height:150px}
+    }
+    @media(max-width:900px){
+  .porter-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="logo">KS</div>
+      <div>
+        <strong>Laman Kapita Selekta</strong><br>
+        <small style="color:#6b7280">Intan Eka Safitri — 2315061064</small>
+      </div>
+    </div>
+    <nav>
+      <a href="#latar">Latar</a>
+      <a href="#pendatar">Pendatar</a>
+      <a href="#kompetensi">Kompetensi</a>
+      <a href="#swebok">SWEBOK</a>
+      <a href="#konsep">Konsep</a>
+      <a href="#karakteristik">Karakteristik</a>
+      <a href="#swot">SWOT</a>
+      <a href="#porter">Porter</a>
+      <a href="#opensrc">Opensource</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-card">
+        <h2 style="font-size:28px;color:var(--accent1)">Halo, Saya Intan!</h2>
+        <p style="font-size:16px;color:#444;margin-bottom:20px">
+          Selamat datang di laman pribadi saya. Melalui situs ini, saya menyajikan rangkuman materi Kapita Selekta beserta analisis SWOT, Porter, serta pandangan mengenai perkembangan teknologi dan lingkungan sekitar. Semoga laman ini dapat menjadi media berbagi pengetahuan sekaligus refleksi perjalanan akademik saya.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <h4 style="color:var(--accent2)">Rencana Judul Skripsi/KP</h4>
+            <p>Pengembangan Sistem Informasi Pelacakan Angkot Berbasis Web & Mobile dengan Agile.</p>
+          </div>
+          <div class="card">
+            <h4 style="color:var(--accent2)">Kompetensi</h4>
+            <p>RPL, Pemrograman Web/Mobile, Basis Data, HCI.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:22px">
+          <a href="#swot" class="btn">🔎 Lihat Analisis SWOT</a>
+        </div>
+      </div>
+
+     <aside class="profile">
+  <img src="Intan-Eka-Safitri.jpg" alt="Foto Intan">
+</aside>
+
+    </section>
+
+    <!-- Latar Belakang -->
+    <section id="latar" class="section">
+      <h3>Latar Belakang</h3>
+      <p>Transportasi umum seperti angkutan kota (angkot) masih menjadi pilihan utama di Lampung, khususnya bagi mahasiswa dan pekerja. Namun, sering muncul masalah berupa ketidakpastian kedatangan angkot, kurangnya informasi rute, serta kesulitan pengguna dalam memperkirakan waktu tempuh.</p>
+      <p>Dengan perkembangan teknologi web dan mobile, aplikasi digital menjadi solusi potensial untuk menyediakan informasi posisi angkot secara real-time, estimasi waktu kedatangan, dan jalur yang dilalui.</p>
+    </section>
+
+    <!-- Kekuatan Pendatar Dunia -->
+    <section id="pendatar" class="section">
+      <h3>Kekuatan Pendatar Dunia</h3>
+      <p>Kekuatan pendatar dunia yang sesuai adalah <b>digitalisasi transportasi publik</b>. Transformasi digital merambah berbagai sektor, termasuk transportasi, sehingga aplikasi berbasis web dan mobile menjadi solusi utama untuk meningkatkan transparansi, efisiensi, dan kenyamanan layanan.</p>
+    </section>
+
+    <!-- Kompetensi -->
+<section id="kompetensi" class="section">
+  <h3>Kompetensi Kurikulum PSTI</h3>
+  <div class="kompetensi-grid">
+    <div class="kompetensi-card" style="border-top-color:var(--accent1)">
+      <h4 style="color:var(--accent2)">Rekayasa Perangkat Lunak</h4>
+      <p>Menganalisis kebutuhan pengguna, merancang, dan mengimplementasikan sistem berbasis <b>Agile</b> untuk hasil yang adaptif.</p>
+    </div>
+    <div class="kompetensi-card" style="border-top-color:var(--accent2)">
+      <h4 style="color:var(--accent1)">Pemrograman Web & Mobile</h4>
+      <p>Membangun aplikasi modern berbasis <b>Laravel</b> (web) serta <b>Flutter/React Native</b> (mobile) yang responsif.</p>
+    </div>
+    <div class="kompetensi-card" style="border-top-color:var(--accent3)">
+      <h4 style="color:var(--accent2)">Basis Data</h4>
+      <p>Merancang <b>database</b> untuk mengelola data lokasi, jalur, serta jadwal angkot dengan efisien.</p>
+    </div>
+    <div class="kompetensi-card" style="border-top-color:var(--accent1)">
+      <h4 style="color:var(--accent3)">Human-Computer Interaction</h4>
+      <p>Mendesain antarmuka <b>user-friendly</b> agar aplikasi mudah dipahami dan nyaman digunakan masyarakat.</p>
+    </div>
+  </div>
+</section>
+
+
+    <!-- SWEBOK -->
+    <section id="swebok" class="section">
+      <h3>Area SWEBOK yang Relevan</h3>
+      <ul>
+        <li><b>Software Requirements:</b> analisis kebutuhan pengguna (penumpang & sopir angkot).</li>
+        <li><b>Software Design:</b> perancangan arsitektur sistem, UML, dan desain UI/UX.</li>
+        <li><b>Software Construction:</b> implementasi aplikasi dengan integrasi Google Maps API.</li>
+        <li><b>Software Testing:</b> pengujian black-box serta uji usability.</li>
+        <li><b>Software Engineering Professional Practice:</b> kerja sama dengan stakeholder (pengguna, pemerintah daerah).</li>
+        <li><b>Software Engineering Models & Methods:</b> penerapan metode Agile dalam pengembangan.</li>
+      </ul>
+    </section>
+
+    <!-- Konsep -->
+<section id="konsep" class="section">
+  <h3>Konsep Dasar Kapita Selekta</h3>
+  <div class="grid-2">
+    <div class="card">
+      <h4>Mengapa Penting?</h4>
+      <p>
+        Kapita Selekta merupakan wadah untuk membahas isu-isu aktual dalam bidang 
+        informatika dan sistem informasi. Penting karena memberikan ruang untuk 
+        mengaitkan teori dengan fenomena nyata sehingga mahasiswa mampu melihat 
+        relevansi ilmu dengan kebutuhan masyarakat dan perkembangan teknologi.
+      </p>
+    </div>
+    <div class="card">
+      <h4>Pendekatan</h4>
+      <p>
+        Pendekatannya bersifat fleksibel, tematis, dan kontekstual. Materi dipilih 
+        sesuai topik terkini, lalu dianalisis dengan perspektif rekayasa perangkat lunak, 
+        basis data, HCI, maupun metodologi pengembangan. Dengan begitu, mahasiswa dapat 
+        mengasah kemampuan analisis sekaligus menghasilkan solusi aplikatif.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+       <!-- Karakteristik -->
+    <section id="karakteristik" class="section">
+      <h3>Karakteristik Kapita Selekta</h3>
+      <div class="grid-3">
+        <div class="card">
+          <h4>Spesifik & Mendalam</h4>
+          <p>Materi difokuskan pada isu-isu tertentu yang relevan lalu dibahas secara lebih mendalam.</p>
+        </div>
+        <div class="card">
+          <h4>Aktual & Kontekstual</h4>
+          <p>Topik mengikuti perkembangan terbaru di bidang teknologi serta kebutuhan masyarakat.</p>
+        </div>
+        <div class="card">
+          <h4>Interdisipliner</h4>
+          <p>Menggabungkan berbagai bidang ilmu untuk memberikan pemahaman yang lebih komprehensif.</p>
+        </div>
+        <div class="card">
+          <h4>Berorientasi Penelitian/Proyek</h4>
+          <p>Mengarahkan mahasiswa untuk menghasilkan studi kasus, analisis, atau prototipe sebagai dasar skripsi/KP.</p>
+        </div>
+        <div class="card">
+          <h4>Fleksibel</h4>
+          <p>Tema kuliah dapat menyesuaikan dengan tren dan tantangan terbaru sesuai kebutuhan.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SWOT -->
+    <section id="swot" class="section">
+      <h3>Analisis SWOT</h3>
+      <div class="swot-grid">
+        <div class="swot-item swot-strength"><h4>Strength</h4><ul><li>Dasar RPL & HCI kuat</li><li>Familiar Laravel, Figma, UI/UX</li></ul></div>
+        <div class="swot-item swot-weak"><h4>Weakness</h4><ul><li>Kurang pengalaman real-time</li><li>Belum banyak pengalaman stakeholder publik</li><li>Cenderung perfeksionis</li></ul></div>
+        <div class="swot-item swot-opp"><h4>Opportunities</h4><ul><li>Tren digitalisasi transportasi</li><li>Banyak referensi open-source</li><li>Peluang kolaborasi lokal</li></ul></div>
+        <div class="swot-item swot-threat"><h4>Threats</h4><ul><li>Persaingan aplikasi transportasi besar</li><li>Perubahan cepat teknologi/API</li><li>Keterbatasan dukungan teknis</li></ul></div>
+      </div>
+    </section>
+
+    <!-- Porter -->
+<section id="porter" class="section">
+  <h3>Analisis Porter</h3>
+  <div class="porter-list">
+    <div class="porter-item">
+      <div class="porter-item-icon">1</div>
+      <div>
+        <h4>Threat of New Entrants</h4>
+        <p>Banyak developer dapat membuat aplikasi serupa, sehingga dibutuhkan inovasi seperti fitur estimasi waktu dan notifikasi.</p>
+      </div>
+    </div>
+    <div class="porter-item">
+      <div class="porter-item-icon">2</div>
+      <div>
+        <h4>Power of Suppliers</h4>
+        <p>Penyedia API seperti Google Maps dan Firebase menjadi pemasok utama, sehingga efisiensi penggunaannya sangat penting karena terkait biaya.</p>
+      </div>
+    </div>
+    <div class="porter-item">
+      <div class="porter-item-icon">3</div>
+      <div>
+        <h4>Power of Buyers</h4>
+        <p>Pengguna transportasi memiliki banyak pilihan, sehingga aplikasi harus sederhana, mudah digunakan, dan relevan dengan kebutuhan.</p>
+      </div>
+    </div>
+    <div class="porter-item">
+      <div class="porter-item-icon">4</div>
+      <div>
+        <h4>Threat of Substitutes</h4>
+        <p>Aplikasi transportasi online seperti Grab dan Gojek menjadi pengganti yang kuat, sehingga sistem perlu menonjolkan fokus pada rute angkot tradisional.</p>
+      </div>
+    </div>
+    <div class="porter-item">
+      <div class="porter-item-icon">5</div>
+      <div>
+        <h4>Industry Rivalry</h4>
+        <p>Persaingan cukup tinggi, baik antar mahasiswa maupun startup lokal, namun hal ini menjadi motivasi untuk menghadirkan sistem dengan kualitas UI/UX yang lebih baik.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Opensource -->
+    <section id="opensrc" class="section">
+      <h3>Opensource Philosophy</h3>
+      <p>
+        Open-source philosophy menekankan keterbukaan, kolaborasi, dan keberlanjutan. 
+        Dengan membagikan kode secara terbuka, siapa pun bisa mempelajari, memperbaiki, 
+        atau mengembangkan lebih lanjut. Bagi dunia akademik, prinsip ini membantu mahasiswa 
+        dan peneliti mempercepat inovasi, menghindari <i>reinventing the wheel</i>, serta mendorong 
+        kontribusi pada komunitas global. Lisensi populer seperti <b>MIT</b> atau <b>Apache 2.0</b> 
+        dapat dipilih agar proyek tetap terbuka namun tetap terlindungi.
+      </p>
+    </section>
+
